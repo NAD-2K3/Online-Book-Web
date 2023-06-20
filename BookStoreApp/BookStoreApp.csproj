@@ -179,10 +179,30 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\admin.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\20-nam-lich-su-chung-khoan.jpeg" />
+    <Content Include="Content\Images\25207783.jpg" />
+    <Content Include="Content\Images\48-nguyen-tac-chu-chot-cua-quyen-luc-3.jpg" />
+    <Content Include="Content\Images\7-thoi-quen-hieu-qua-1.jpg" />
+    <Content Include="Content\Images\ban-gi-de-nhanh-giau-1.jpg" />
+    <Content Include="Content\Images\bi-quyet-tay-trang-thanh-trieu-phu.jpg" />
+    <Content Include="Content\Images\com-bo-2-cuon-sach-canh-tranh.jpg" />
+    <Content Include="Content\Images\content-nghe-thuat.jpg" />
+    <Content Include="Content\Images\login.png" />
+    <Content Include="Content\Images\Logo.png" />
+    <Content Include="Content\Images\No-Image.png" />
+    <Content Include="Content\Images\prod1.jpg" />
+    <Content Include="Content\Images\prod2.jpg" />
+    <Content Include="Content\Images\signup.png" />
+    <Content Include="Content\Images\slide1.jpg" />
+    <Content Include="Content\Images\slide2.jpg" />
+    <Content Include="Content\Images\tai-chinh-hanh-vi.jpg" />
+    <Content Include="Content\owl.carousel.min.css" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -199,7 +219,10 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\owl.carousel.custom.js" />
+    <Content Include="Scripts\owl.carousel.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
