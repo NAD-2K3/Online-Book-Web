@@ -1,0 +1,639 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BookStoreOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="ID_Admin" />
+          </Key>
+          <Property Name="ID_Admin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Pass_Word" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="Author_ID" />
+          </Key>
+          <Property Name="Author_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="ID_Book" />
+          </Key>
+          <Property Name="ID_Book" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Book_Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PriceImport" Type="float" Nullable="false" />
+          <Property Name="PriceHire" Type="int" Nullable="false" />
+          <Property Name="DateImport" Type="date" Nullable="false" />
+          <Property Name="Chapter" Type="int" Nullable="false" />
+          <Property Name="Link" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ID_BookCategory" Type="int" Nullable="false" />
+          <Property Name="Author_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BookCategory">
+          <Key>
+            <PropertyRef Name="ID_BookCategory" />
+          </Key>
+          <Property Name="ID_BookCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_BookCategory" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="New_Column" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Chat">
+          <Key>
+            <PropertyRef Name="Chat_ID" />
+          </Key>
+          <Property Name="Chat_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Content" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsSenderReaded" Type="int" Nullable="false" />
+          <Property Name="IsRecieverReaded" Type="int" Nullable="false" />
+          <Property Name="User_Name" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="ID_Comment" />
+          </Key>
+          <Property Name="ID_Comment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Content" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+          <Property Name="ID_Book" Type="int" Nullable="false" />
+          <Property Name="User_Name" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="User_Name" />
+          </Key>
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DOB" Type="date" Nullable="false" />
+          <Property Name="Phone_Number" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="User_Name" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HireBook">
+          <Key>
+            <PropertyRef Name="ID_HireBook" />
+          </Key>
+          <Property Name="ID_HireBook" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Confirm" Type="int" Nullable="false" />
+          <Property Name="Total" Type="float" />
+          <Property Name="Date_Start" Type="date" Nullable="false" />
+          <Property Name="Date_End" Type="date" Nullable="false" />
+          <Property Name="User_Name" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HireBookDetail">
+          <Key>
+            <PropertyRef Name="HireBookDetail_ID" />
+          </Key>
+          <Property Name="HireBookDetail_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Book" Type="int" Nullable="false" />
+          <Property Name="ID_HireBook" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="ID_Package" />
+          </Key>
+          <Property Name="ID_Package" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Day_Limit" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Book__Author_ID__32E0915F">
+          <End Role="Author" Type="Self.Author" Multiplicity="1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="Author_ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="Author_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Book__ID_BookCat__31EC6D26">
+          <End Role="BookCategory" Type="Self.BookCategory" Multiplicity="1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookCategory">
+              <PropertyRef Name="ID_BookCategory" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="ID_BookCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Chat__User_Name__2D27B809">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Chat" Type="Self.Chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="User_Name" />
+            </Principal>
+            <Dependent Role="Chat">
+              <PropertyRef Name="User_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comment__ID_Book__35BCFE0A">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="ID_Book" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="ID_Book" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comment__User_Na__36B12243">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="User_Name" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="User_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HireBook__User_N__2A4B4B5E">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="HireBook" Type="Self.HireBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="User_Name" />
+            </Principal>
+            <Dependent Role="HireBook">
+              <PropertyRef Name="User_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HireBookD__ID_Bo__398D8EEE">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="HireBookDetail" Type="Self.HireBookDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="ID_Book" />
+            </Principal>
+            <Dependent Role="HireBookDetail">
+              <PropertyRef Name="ID_Book" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HireBookD__ID_Hi__3A81B327">
+          <End Role="HireBook" Type="Self.HireBook" Multiplicity="1" />
+          <End Role="HireBookDetail" Type="Self.HireBookDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HireBook">
+              <PropertyRef Name="ID_HireBook" />
+            </Principal>
+            <Dependent Role="HireBookDetail">
+              <PropertyRef Name="ID_HireBook" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BookStoreOnlineModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookCategory" EntityType="Self.BookCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chat" EntityType="Self.Chat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HireBook" EntityType="Self.HireBook" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HireBookDetail" EntityType="Self.HireBookDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Package" EntityType="Self.Package" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Book__Author_ID__32E0915F" Association="Self.FK__Book__Author_ID__32E0915F">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Book__ID_BookCat__31EC6D26" Association="Self.FK__Book__ID_BookCat__31EC6D26">
+            <End Role="BookCategory" EntitySet="BookCategory" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Chat__User_Name__2D27B809" Association="Self.FK__Chat__User_Name__2D27B809">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Chat" EntitySet="Chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comment__ID_Book__35BCFE0A" Association="Self.FK__Comment__ID_Book__35BCFE0A">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comment__User_Na__36B12243" Association="Self.FK__Comment__User_Na__36B12243">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HireBook__User_N__2A4B4B5E" Association="Self.FK__HireBook__User_N__2A4B4B5E">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="HireBook" EntitySet="HireBook" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HireBookD__ID_Bo__398D8EEE" Association="Self.FK__HireBookD__ID_Bo__398D8EEE">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="HireBookDetail" EntitySet="HireBookDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HireBookD__ID_Hi__3A81B327" Association="Self.FK__HireBookD__ID_Hi__3A81B327">
+            <End Role="HireBook" EntitySet="HireBook" />
+            <End Role="HireBookDetail" EntitySet="HireBookDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BookStoreOnlineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="ID_Admin" />
+          </Key>
+          <Property Name="ID_Admin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pass_Word" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="Author_ID" />
+          </Key>
+          <Property Name="Author_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="Self.FK__Book__Author_ID__32E0915F" FromRole="Author" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="ID_Book" />
+          </Key>
+          <Property Name="ID_Book" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Book_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PriceImport" Type="Double" Nullable="false" />
+          <Property Name="PriceHire" Type="Int32" Nullable="false" />
+          <Property Name="DateImport" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Chapter" Type="Int32" Nullable="false" />
+          <Property Name="Link" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_BookCategory" Type="Int32" Nullable="false" />
+          <Property Name="Author_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Author" Relationship="Self.FK__Book__Author_ID__32E0915F" FromRole="Book" ToRole="Author" />
+          <NavigationProperty Name="BookCategory" Relationship="Self.FK__Book__ID_BookCat__31EC6D26" FromRole="Book" ToRole="BookCategory" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK__Comment__ID_Book__35BCFE0A" FromRole="Book" ToRole="Comment" />
+          <NavigationProperty Name="HireBookDetails" Relationship="Self.FK__HireBookD__ID_Bo__398D8EEE" FromRole="Book" ToRole="HireBookDetail" />
+        </EntityType>
+        <EntityType Name="BookCategory">
+          <Key>
+            <PropertyRef Name="ID_BookCategory" />
+          </Key>
+          <Property Name="ID_BookCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_BookCategory" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="New_Column" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="Self.FK__Book__ID_BookCat__31EC6D26" FromRole="BookCategory" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="Chat">
+          <Key>
+            <PropertyRef Name="Chat_ID" />
+          </Key>
+          <Property Name="Chat_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsSenderReaded" Type="Int32" Nullable="false" />
+          <Property Name="IsRecieverReaded" Type="Int32" Nullable="false" />
+          <Property Name="User_Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Chat__User_Name__2D27B809" FromRole="Chat" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="ID_Comment" />
+          </Key>
+          <Property Name="ID_Comment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Content" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
+          <Property Name="ID_Book" Type="Int32" Nullable="false" />
+          <Property Name="User_Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Book" Relationship="Self.FK__Comment__ID_Book__35BCFE0A" FromRole="Comment" ToRole="Book" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Comment__User_Na__36B12243" FromRole="Comment" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="User_Name" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Phone_Number" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="User_Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Chats" Relationship="Self.FK__Chat__User_Name__2D27B809" FromRole="Customer" ToRole="Chat" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK__Comment__User_Na__36B12243" FromRole="Customer" ToRole="Comment" />
+          <NavigationProperty Name="HireBooks" Relationship="Self.FK__HireBook__User_N__2A4B4B5E" FromRole="Customer" ToRole="HireBook" />
+        </EntityType>
+        <EntityType Name="HireBook">
+          <Key>
+            <PropertyRef Name="ID_HireBook" />
+          </Key>
+          <Property Name="ID_HireBook" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Confirm" Type="Int32" Nullable="false" />
+          <Property Name="Total" Type="Double" />
+          <Property Name="Date_Start" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date_End" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="User_Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__HireBook__User_N__2A4B4B5E" FromRole="HireBook" ToRole="Customer" />
+          <NavigationProperty Name="HireBookDetails" Relationship="Self.FK__HireBookD__ID_Hi__3A81B327" FromRole="HireBook" ToRole="HireBookDetail" />
+        </EntityType>
+        <EntityType Name="HireBookDetail">
+          <Key>
+            <PropertyRef Name="HireBookDetail_ID" />
+          </Key>
+          <Property Name="HireBookDetail_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Book" Type="Int32" Nullable="false" />
+          <Property Name="ID_HireBook" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Book" Relationship="Self.FK__HireBookD__ID_Bo__398D8EEE" FromRole="HireBookDetail" ToRole="Book" />
+          <NavigationProperty Name="HireBook" Relationship="Self.FK__HireBookD__ID_Hi__3A81B327" FromRole="HireBookDetail" ToRole="HireBook" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="ID_Package" />
+          </Key>
+          <Property Name="ID_Package" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Day_Limit" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Book__Author_ID__32E0915F">
+          <End Role="Author" Type="Self.Author" Multiplicity="1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="Author_ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="Author_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Book__ID_BookCat__31EC6D26">
+          <End Role="BookCategory" Type="Self.BookCategory" Multiplicity="1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookCategory">
+              <PropertyRef Name="ID_BookCategory" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="ID_BookCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comment__ID_Book__35BCFE0A">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="ID_Book" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="ID_Book" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HireBookD__ID_Bo__398D8EEE">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="HireBookDetail" Type="Self.HireBookDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="ID_Book" />
+            </Principal>
+            <Dependent Role="HireBookDetail">
+              <PropertyRef Name="ID_Book" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Chat__User_Name__2D27B809">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Chat" Type="Self.Chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="User_Name" />
+            </Principal>
+            <Dependent Role="Chat">
+              <PropertyRef Name="User_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comment__User_Na__36B12243">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="User_Name" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="User_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HireBook__User_N__2A4B4B5E">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="HireBook" Type="Self.HireBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="User_Name" />
+            </Principal>
+            <Dependent Role="HireBook">
+              <PropertyRef Name="User_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HireBookD__ID_Hi__3A81B327">
+          <End Role="HireBook" Type="Self.HireBook" Multiplicity="1" />
+          <End Role="HireBookDetail" Type="Self.HireBookDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HireBook">
+              <PropertyRef Name="ID_HireBook" />
+            </Principal>
+            <Dependent Role="HireBookDetail">
+              <PropertyRef Name="ID_HireBook" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BookStoreOnlineEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Authors" EntityType="Self.Author" />
+          <EntitySet Name="Books" EntityType="Self.Book" />
+          <EntitySet Name="BookCategories" EntityType="Self.BookCategory" />
+          <EntitySet Name="Chats" EntityType="Self.Chat" />
+          <EntitySet Name="Comments" EntityType="Self.Comment" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="HireBooks" EntityType="Self.HireBook" />
+          <EntitySet Name="HireBookDetails" EntityType="Self.HireBookDetail" />
+          <EntitySet Name="Packages" EntityType="Self.Package" />
+          <AssociationSet Name="FK__Book__Author_ID__32E0915F" Association="Self.FK__Book__Author_ID__32E0915F">
+            <End Role="Author" EntitySet="Authors" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Book__ID_BookCat__31EC6D26" Association="Self.FK__Book__ID_BookCat__31EC6D26">
+            <End Role="BookCategory" EntitySet="BookCategories" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comment__ID_Book__35BCFE0A" Association="Self.FK__Comment__ID_Book__35BCFE0A">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HireBookD__ID_Bo__398D8EEE" Association="Self.FK__HireBookD__ID_Bo__398D8EEE">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="HireBookDetail" EntitySet="HireBookDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Chat__User_Name__2D27B809" Association="Self.FK__Chat__User_Name__2D27B809">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Chat" EntitySet="Chats" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comment__User_Na__36B12243" Association="Self.FK__Comment__User_Na__36B12243">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HireBook__User_N__2A4B4B5E" Association="Self.FK__HireBook__User_N__2A4B4B5E">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="HireBook" EntitySet="HireBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HireBookD__ID_Hi__3A81B327" Association="Self.FK__HireBookD__ID_Hi__3A81B327">
+            <End Role="HireBook" EntitySet="HireBooks" />
+            <End Role="HireBookDetail" EntitySet="HireBookDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BookStoreOnlineModelStoreContainer" CdmEntityContainer="BookStoreOnlineEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="BookStoreOnlineModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="ID_Admin" ColumnName="ID_Admin" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="Pass_Word" ColumnName="Pass_Word" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Authors">
+            <EntityTypeMapping TypeName="BookStoreOnlineModel.Author">
+              <MappingFragment StoreEntitySet="Author">
+                <ScalarProperty Name="Author_ID" ColumnName="Author_ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="BookStoreOnlineModel.Book">
+              <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="ID_Book" ColumnName="ID_Book" />
+                <ScalarProperty Name="Book_Name" ColumnName="Book_Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="PriceImport" ColumnName="PriceImport" />
+                <ScalarProperty Name="PriceHire" ColumnName="PriceHire" />
+                <ScalarProperty Name="DateImport" ColumnName="DateImport" />
+                <ScalarProperty Name="Chapter" ColumnName="Chapter" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="ID_BookCategory" ColumnName="ID_BookCategory" />
+                <ScalarProperty Name="Author_ID" ColumnName="Author_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookCategories">
+            <EntityTypeMapping TypeName="BookStoreOnlineModel.BookCategory">
+              <MappingFragment StoreEntitySet="BookCategory">
+                <ScalarProperty Name="ID_BookCategory" ColumnName="ID_BookCategory" />
+                <ScalarProperty Name="Name_BookCategory" ColumnName="Name_BookCategory" />
+                <ScalarProperty Name="New_Column" ColumnName="New_Column" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chats">
+            <EntityTypeMapping TypeName="BookStoreOnlineModel.Chat">
+              <MappingFragment StoreEntitySet="Chat">
+                <ScalarProperty Name="Chat_ID" ColumnName="Chat_ID" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="IsSenderReaded" ColumnName="IsSenderReaded" />
+                <ScalarProperty Name="IsRecieverReaded" ColumnName="IsRecieverReaded" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="BookStoreOnlineModel.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="ID_Comment" ColumnName="ID_Comment" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="ID_Book" ColumnName="ID_Book" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="BookStoreOnlineModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HireBooks">
+            <EntityTypeMapping TypeName="BookStoreOnlineModel.HireBook">
+              <MappingFragment StoreEntitySet="HireBook">
+                <ScalarProperty Name="ID_HireBook" ColumnName="ID_HireBook" />
+                <ScalarProperty Name="Confirm" ColumnName="Confirm" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Date_Start" ColumnName="Date_Start" />
+                <ScalarProperty Name="Date_End" ColumnName="Date_End" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HireBookDetails">
+            <EntityTypeMapping TypeName="BookStoreOnlineModel.HireBookDetail">
+              <MappingFragment StoreEntitySet="HireBookDetail">
+                <ScalarProperty Name="HireBookDetail_ID" ColumnName="HireBookDetail_ID" />
+                <ScalarProperty Name="ID_Book" ColumnName="ID_Book" />
+                <ScalarProperty Name="ID_HireBook" ColumnName="ID_HireBook" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Packages">
+            <EntityTypeMapping TypeName="BookStoreOnlineModel.Package">
+              <MappingFragment StoreEntitySet="Package">
+                <ScalarProperty Name="ID_Package" ColumnName="ID_Package" />
+                <ScalarProperty Name="Day_Limit" ColumnName="Day_Limit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
