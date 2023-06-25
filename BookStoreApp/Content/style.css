@@ -506,5 +506,36 @@
     border: 1px solid #d1d1d1;
 }
 
+.form-check-input {
+    width: 25px;
+    height: 25px;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+#number {
+    height: 100%;
+    width: 20%;
+    margin-left: 30px;
+}
+
+.btn-rent {
+    width: 35%;
+    height: 50px;
+    background-color: var(--main-color);
+    color: #ffffff;
+}
+
+    .btn-rent:hover {
+        background-color: #ffffff;
+        color: var(--main-color);
+        border: 2px solid var(--main-color);
+    }
+
+
+
 
 
