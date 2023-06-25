@@ -203,6 +203,7 @@
     <Compile Include="Comment.cs">
       <DependentUpon>BookStoreDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\DetailBookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Customer.cs">
       <DependentUpon>BookStoreDBModel.tt</DependentUpon>
@@ -301,6 +302,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\DetailBook\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
