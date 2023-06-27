@@ -203,6 +203,7 @@
     <Compile Include="Comment.cs">
       <DependentUpon>BookStoreDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\BookCartController.cs" />
     <Compile Include="Controllers\DetailBookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Customer.cs">
@@ -217,9 +218,7 @@
     <Compile Include="HireBookDetail.cs">
       <DependentUpon>BookStoreDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Package.cs">
       <DependentUpon>BookStoreDBModel.tt</DependentUpon>
     </Compile>
@@ -303,6 +302,9 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\DetailBook\Index.cshtml" />
+    <Content Include="Views\BookCart\Index.cshtml" />
+    <Content Include="Views\BookCart\ThankYouPage.cshtml" />
+    <Content Include="Views\BookCart\CartPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

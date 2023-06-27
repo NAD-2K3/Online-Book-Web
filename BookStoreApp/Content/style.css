@@ -166,7 +166,7 @@
 .help-item i{
     font-size: 50px;
 }
-.footer {background-color: var(--main-color); padding: 20px auto;}
+.footer {background-color: var(--main-color); padding: 20px ;}
 
 .foot-list{
     color: #fff;
@@ -301,8 +301,8 @@
     color: #fff;
     border: none;
     outline: none;
-    width: 30%;
-    height: 37px;
+    width: 100%;
+    height: 50%;
     transition: 0.3s;
 }
 
@@ -536,6 +536,78 @@
     }
 
 
+.bill__section {
+    text-align: center;
+    margin-top: 100px;
+}
 
+.bill__icon {
+    color: #24B824;
+    font-size: 10rem;
+}
 
+.bill__status {
+    margin: 20px 0;
+    color: #24B824;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.bill__content {
+    padding: 20px 0;
+    font-size: 1.5rem;
+    line-height: 30px;
+    font-size: 2rem;
+}
+
+.bill__button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn__bill {
+    border-radius: 5px;
+    border: 1px solid #CA2227;
+    height: 40px;
+    width: 400px;
+    background-color: #CA2227;
+    cursor: pointer;
+}
+
+    .btn__bill a {
+        color: white;
+        font-size: 2rem;
+        text-decoration: none;
+    }
+
+.btn__bill-second {
+    border-radius: 5px;
+    border: 1px solid #CA2227;
+    height: 40px;
+    width: 400px;
+    background-color: white;
+    color: #CA2227;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+    .btn__bill-second a {
+        text-decoration: none;
+    }
+
+.amount-cart-item {
+    /* font-size:15px;
+    position:absolute;*/
+    color: rgb(36, 36, 36);
+    background: rgb(253, 216, 53);
+    height: 20px;   
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    font-size: 15px;
+    font-weight: 500;
+    position: absolute;
+    padding: 0px 7px;
+}
 

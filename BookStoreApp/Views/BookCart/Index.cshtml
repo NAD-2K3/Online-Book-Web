@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@using BookStoreApp.Models
+
+<div class="body-page">
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th scope="col">Sản phẩm</th>
+                <th scope="col">Gói ngày</th>
+                <th scope="col">Đơn giá</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            @foreach (var item in Model)
+            {
+                <tr class="prod-list-table">
+
+                    <td class="prod-list-details" style="padding-top: 10px;">
+                        <img src="Images/prod2.jpg" alt="">
+                        <h5>@item.Name</h5>
+                    </td>
+                    <td>
+                        <form action="#" class="edit-quantity-form">
+
+                            <select class="custom-select" id="@item.Id-selected" style="width:50%">
+
+
+                                @foreach (var itemOptionDay in ViewBag.lstDayPackage)
+                                {
+                                    <option id="@itemOptionDay.ID_Package.ToString()" value="@itemOptionDay.ID_Package">@itemOptionDay.Day_Limit ngày</option>
+                                }
+
+                            </select>
+                            <script>
+
+                                var packageDay = @item.DayPackage;
+                      
+                                var day_input_selected = document.getElementById('@item.Id-selected');
+                                day_input_selected.value = packageDay+ '';
+
+
+
+                            </script>
+
+                            <button type="submit"><i class="bi bi-arrow-clockwise"></i></button>
+                        </form>
+                    </td>
+                    <td>
+                        <h5>500.000đ</h5>
+                    </td>
+                    <td><a href="#" class="delete-prod-btn"><i class="bi bi-x-square-fill"></i></a></td>
+                </tr>
+            }
+
+
+
+        </tbody>
+    </table>
+
+    <hr />
+
+    <form action="#" class="checkout-form">
+        <div class="row infor-order">
+
+            <div class="col-lg-9">
+                <table class="table ">
+                    <tr>
+                        <td>Số lượng sản phẩm</td>
+                        <td style="font-weight: bold">@ViewBag.TotalNumber</td>
+                    </tr>
+                    <tr>
+                        <td>Tổng giá</td>
+                        <td><h4>@String.Format("{0:#,##0;Nothing}", ViewBag.TotalPrice) đ</h4></td>
+                    </tr>
+                </table>
+
+            </div>
+
+            <div class="col-lg-3">
+                <button type="submit" onclick="location.href = '@Url.Action("ThankYouPage", "BookCart")'" class="checkout-btn">Đặt hàng</button>
+            </div>
+        </div>
+    </form>
+
+
+</div>
+
+

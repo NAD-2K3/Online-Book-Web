@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "ThankYouPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="bill__section">
+    <div class="bill__icon">
+        <i class="fa-regular fa-circle-check bill__icon"></i>
+    </div>
+
+    <div class="bill__status">Đơn hàng của bạn đã được tiếp nhận</div>
+
+    <div class="bill__content">
+        Cảm ơn bạn đã thuê sách tại KDTT
+        <br />
+        Hãy vui lòng thanh toán để nhận được mã thuê sách từ chúng tôi
+    </div>
+
+    <div class="bill__button">
+        <button class="btn__bill btn"  onclick="location.href = '@Url.Action("Index", "Home")'">
+            Tiếp tục mua sắm
+        </button>
+
+        <br />
+        <button class="btn__bill-second" onclick="location.href = '@Url.Action("Index", "DetailBook")'">
+            Xem chi tiết đơn hàng
+        </button>
+    </div>
+</div>

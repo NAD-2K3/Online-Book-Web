@@ -9,8 +9,11 @@
         <div class="col-lg-5">
             <img src="~/Content/Images/prod2.jpg" style="width:100%" alt="">
         </div>
-        <div class="col-lg-7">
-            <h3>Tổng hợp ngữ pháp tiếng anh</h3>
+        @using (Html.BeginForm("AddToCart", "BookCart", FormMethod.Post, new { @class = "col-lg-7" }))
+        {
+            @Html.ValidationSummary(true)
+            <h3>@ViewBag.Book.Book_Name</h3>
+
             <p> <b>Tác giả:</b> NXB Kim Đồng</p>
             <p>
                 <b>Mô tả:</b>
@@ -24,8 +27,8 @@
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Gói thuê ngày</label>
                 </div>
-                <select class="custom-select" id="inputGroupSelect01">
-                    <option selected>Chọn gói...</option>
+                <select class="custom-select" name="DayPackage" id="inputGroupSelect01">
+                    <option selected value="0">Chọn gói...</option>
                     <option value="1">3 ngày</option>
                     <option value="2">5 ngày</option>
                     <option value="3">7 ngày</option>
@@ -36,10 +39,10 @@
             <hr style="background-color: black; width: 100%;">
             <p><b style="font-size: 20px;">Tổng tiền: </b></p>
             <p style="font-weight: 600; font-size: 35px; color: rgb(220, 0, 0);">20.000 đ</p>
-
+            <input type="hidden" value="@ViewBag.Book.ID_Book" name="IDBook" />
             <button class="btn btn-rent" type="submit">Đặt thuê</button>
 
-        </div>
+        }
 
         <!--
         <span>Đánh giá : </span>

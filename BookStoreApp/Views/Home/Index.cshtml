@@ -27,116 +27,36 @@
     <h3>Sách hay tuyển chọn</h3>
     <hr />
     <div class="row owl-carousel">
-        <!-- product -->
-        <div class="col-lg-3 prod-item item">
-            <div class="card" style="width: 18rem;">
-                <a href=""><img class="card-img-top" src="~/Content/Images/prod2.jpg" alt="Card image cap"></a>
-                <div class="card-body">
-                    <a href="#" class="title-prod"> <h5 class="card-title">luyện thi tiếng anh, tự tin giao tiếp</h5> </a>
-                    <h5 style="color: darkred;">50000đ</h5>
-                    <p class="card-text rating-card">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <span style="color: black;">(0 đánh giá)</span>
-                    </p>
-                    <a href="#" class="add-to-cart-btn"><i class="bi bi-cart-plus-fill"></i></a>
-                    <a href="#" class="see-detail-prod"><i class="bi bi-eye"></i></a>
 
+
+        @foreach (var item in ViewBag.lstBook)
+        {
+            <!-- product -->
+
+            <div class="col-lg-3 prod-item item">
+                <div class="card" style="width: 18rem;">
+                    <a href="@Url.Action("Index/" + item.ID_Book, "DetailBook")"><img class="card-img-top" src="~/Content/Images/prod2.jpg" alt="Card image cap"></a>
+                    <div class="card-body">
+                        <a href="#" class="title-prod"> <h5 class="card-title">@item.Book_Name</h5> </a>
+                        <h5 style="color: darkred;">50000đ</h5>
+                        <p class="card-text rating-card">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <span style="color: black;">(0 đánh giá)</span>
+                        </p>
+                        <a href="#" class="add-to-cart-btn"><i class="bi bi-cart-plus-fill"></i></a>
+                        <a href="#" class="see-detail-prod"><i class="bi bi-eye"></i></a>
+
+                    </div>
                 </div>
             </div>
-        </div>
-        <!--end product -->
-        <!-- product -->
-        <div class="col-lg-3 prod-item item">
-            <div class="card" style="width: 18rem;">
-                <a href=""><img class="card-img-top" src="~/Content/Images/prod2.jpg" alt="Card image cap"></a>
-                <div class="card-body">
-                    <a href="#" class="title-prod"> <h5 class="card-title">luyện thi tiếng anh, tự tin giao tiếp</h5> </a>
-                    <h5 style="color: darkred;">50000đ</h5>
-                    <p class="card-text rating-card">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <span style="color: black;">(0 đánh giá)</span>
-                    </p>
-                    <a href="#" class="add-to-cart-btn"><i class="bi bi-cart-plus-fill"></i></a>
-                    <a href="#" class="see-detail-prod"><i class="bi bi-eye"></i></a>
+            <!--end product -->
+        }
 
-                </div>
-            </div>
-        </div>
-        <!--end product -->
-        <!-- product -->
-        <div class="col-lg-3 prod-item item">
-            <div class="card" style="width: 18rem;">
-                <a href=""><img class="card-img-top" src="~/Content/Images/prod2.jpg" alt="Card image cap"></a>
-                <div class="card-body">
-                    <a href="#" class="title-prod"> <h5 class="card-title">luyện thi tiếng anh, tự tin giao tiếp</h5> </a>
-                    <h5 style="color: darkred;">50000đ</h5>
-                    <p class="card-text rating-card">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <span style="color: black;">(0 đánh giá)</span>
-                    </p>
-                    <a href="#" class="add-to-cart-btn"><i class="bi bi-cart-plus-fill"></i></a>
-                    <a href="#" class="see-detail-prod"><i class="bi bi-eye"></i></a>
 
-                </div>
-            </div>
-        </div>
-        <!--end product -->
-        <!-- product -->
-        <div class="col-lg-3 prod-item item">
-            <div class="card" style="width: 18rem;">
-                <a href=""><img class="card-img-top" src="~/Content/Images/prod2.jpg" alt="Card image cap"></a>
-                <div class="card-body">
-                    <a href="#" class="title-prod"> <h5 class="card-title">luyện thi tiếng anh, tự tin giao tiếp</h5> </a>
-                    <h5 style="color: darkred;">50000đ</h5>
-                    <p class="card-text rating-card">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <span style="color: black;">(0 đánh giá)</span>
-                    </p>
-                    <a href="#" class="add-to-cart-btn"><i class="bi bi-cart-plus-fill"></i></a>
-                    <a href="#" class="see-detail-prod"><i class="bi bi-eye"></i></a>
-
-                </div>
-            </div>
-        </div>
-        <!--end product -->
-        <!-- product -->
-        <div class="col-lg-3 prod-item item">
-            <div class="card" style="width: 18rem;">
-                <a href=""><img class="card-img-top" src="~/Content/Images/prod2.jpg" alt="Card image cap"></a>
-                <div class="card-body">
-                    <a href="#" class="title-prod"> <h5 class="card-title">luyện thi tiếng anh, tự tin giao tiếp</h5> </a>
-                    <h5 style="color: darkred;">50000đ</h5>
-                    <p class="card-text rating-card">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <span style="color: black;">(0 đánh giá)</span>
-                    </p>
-                    <a href="#" class="add-to-cart-btn"><i class="bi bi-cart-plus-fill"></i></a>
-                    <a href="#" class="see-detail-prod"><i class="bi bi-eye"></i></a>
-
-                </div>
-            </div>
-        </div>
-        <!--end product -->
 
 
 
