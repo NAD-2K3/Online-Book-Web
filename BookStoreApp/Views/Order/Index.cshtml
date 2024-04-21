@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Xác nhận
+        </th>
+        <th>
+            Tổng tiền
+        </th>
+        <th>
+            Gói ngày
+        </th>
+        
+        <th>
+            Tên khách hàng
+        </th>
+    </tr>
+
+@foreach (var item in ViewBag.OrderList) {
+    <tr>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.Confirm)*@
+            @item.Confirm
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.Total)*@
+            @item.Total
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.Date_Start)*@
+            @item.Date_Start
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.TransactionImage)
+        </td>*@
+        <td>
+         @*   @Html.DisplayFor(modelItem => item.Customer.Name)*@
+            @item.Customer.Name
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.ID_HireBook }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_HireBook })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,62 @@
+﻿@{
+    TimeSpan dayleft;
+    int ngay;
+    int hour;
+    int minute;
+    int second;
+    int count = 0;
+}
+
+
+@foreach (var item in ViewBag.lstHireBookDetail)
+{
+
+    <tr class="statistic-list" style="background-color: rgb(221, 220, 220);">
+        <th scope="row">@item.HireBookDetail_ID</th>
+        <th scope="row">@item.HireBook.Customer.Name</th>
+        <td>@item.Book.Book_Name</td>
+        @if (@item.Date_Start != null)
+        {
+            <td>@item.Date_Start</td>
+            <td>@item.Date_End</td>
+            dayleft = @item.Date_End - DateTime.Now;
+            ngay = dayleft.Days;
+
+        }
+        else
+        {
+            dayleft = DateTime.Now - DateTime.Now;
+            <td class="link-order-detail-view"> <a href="/Admin/AdminHome/Index" style="color:red">Chưa xác nhận</td>
+            <td class="link-order-detail-view"> <a href="/Admin/AdminHome/Index" style="color:red">Chưa xác nhận</td>
+        }
+
+        @if (item.HireBook.Confirm == null)
+        {
+            <td class="link-order-detail-view"> <a href="/Admin/AdminHome/Index" style="color:red">Chưa thực hiện</a> </td>
+        }
+        else if (item.Confrim == null)
+        {
+            ngay = dayleft.Days;
+            hour = dayleft.Hours;
+            minute = dayleft.Minutes;
+            second = dayleft.Seconds;
+            <td>
+                <span id="days_@count">@ngay</span>:
+                <span id="hours_@count">@hour</span>
+                :<span id="minutes_@count">@minute</span>
+                :<span id="seconds_@count">@second</span>
+
+            </td>
+            count++;
+        }
+        else
+        {
+            <td class="link-order-detail-view" style="color:green">Đã hoàn tất </td>
+        }
+    </tr>
+
+}
+<input type="hidden" id="Count" value="@count"></input>
+<script src="~/Scripts/CountDown/JavaScript.js">
+
+</script>

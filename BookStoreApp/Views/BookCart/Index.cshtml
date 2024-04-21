@@ -25,7 +25,7 @@
                 <tr class="prod-list-table">
 
                     <td class="prod-list-details" style="padding-top: 10px;">
-                        <img src="Images/prod2.jpg" alt="">
+                        <img src="~/Content/Images/@item.Image" alt="">
                         <h5>@item.Name</h5>
                     </td>
                     <td>
@@ -41,23 +41,20 @@
 
                             </select>
                             <script>
-
                                 var packageDay = @item.DayPackage;
-                      
+
                                 var day_input_selected = document.getElementById('@item.Id-selected');
+
                                 day_input_selected.value = packageDay+ '';
-
-
-
                             </script>
 
                             <button type="submit"><i class="bi bi-arrow-clockwise"></i></button>
                         </form>
                     </td>
                     <td>
-                        <h5>500.000đ</h5>
+                        <h5>  @String.Format("{0:#,##0;Nothing}", item.Price)  đ</h5>
                     </td>
-                    <td><a href="#" class="delete-prod-btn"><i class="bi bi-x-square-fill"></i></a></td>
+                    <td><a href="@Url.Action("RemoveProduct/" + item.Id,"BookCart")" class="delete-prod-btn"><i class="bi bi-x-square-fill"></i></a></td>
                 </tr>
             }
 
@@ -68,7 +65,9 @@
 
     <hr />
 
-    <form action="#" class="checkout-form">
+    @using (Html.BeginForm("Checkout", "BookCart", FormMethod.Post, new { @class = "checkout-form" }))
+    {
+        @Html.ValidationSummary(true)
         <div class="row infor-order">
 
             <div class="col-lg-9">
@@ -84,14 +83,16 @@
                 </table>
 
             </div>
+            <input type="hidden" name="user_name" value="@Session["User_Name"]"/>
+            
 
             <div class="col-lg-3">
-                <button type="submit" onclick="location.href = '@Url.Action("ThankYouPage", "BookCart")'" class="checkout-btn">Đặt hàng</button>
+                <button type="submit" class="checkout-btn">Đặt hàng</button>
             </div>
         </div>
-    </form>
+    }
 
 
-</div>
+    </div>
 
 

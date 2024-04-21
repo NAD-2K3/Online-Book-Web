@@ -1,0 +1,27 @@
+﻿@{
+
+}
+
+@foreach (var item in ViewBag.lst)
+{
+    <tr class="statistic-list" style="background-color: rgb(221, 220, 220);">
+        <th scope="row">@item.ID_HireBook</th>
+        <td>@item.Customer.Name</td>
+        <td>@item.Date_Start</td>
+        <td>
+            @if (item.Confirm == 0)
+            {
+                <span style="color: red">Xác nhận</span>
+            }
+            else
+            {
+                <span style="color: green">Đã xác nhận</span>
+            }
+        </td>
+        <td class="link-order-detail-view">
+            <a href="/Admin/AdminHome/ConfirmDeatilHireBook/?i= @item.ID_HireBook">Xem chi tiết</a>
+
+
+        </td>
+    </tr>
+}

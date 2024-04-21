@@ -1,0 +1,93 @@
+﻿@model BookStoreApp.Models.Book
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h2>Thêm sách</h2>
+<style>
+    .input-add-prod {
+        width: 80%;
+        margin-bottom: 30px;
+    }
+
+    .dropdown-input-prod {
+        width: 80%;
+    }
+
+    .form-group-input-prod {
+        border: 1px solid #cfcfcf;
+        padding: 20px;
+        width: 80%;
+    }
+</style>
+
+@using (Html.BeginForm("Create", "Books", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-lg-3 img-upload">
+            <img src="~/Content/Images/No-Image.png" id="img_book_upload" alt="">
+            <input accept="~Content/Images/*" type="file" id="img_book_upload_btn" style="display:none" name="ImageProd">
+            <script>
+                img_book_upload_btn.onchange = evt => {
+                    const [file] = img_book_upload_btn.files
+                    if (file) {
+                        img_book_upload.src = URL.createObjectURL(file)
+                    }
+                }
+            </script>
+            <div class="upload-book-icon">
+                <label for="img_book_upload_btn"><i class="bi bi-upload"></i></label>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <h3> Thêm file sách</h3>
+            <input type="file" name="LinkPDF" />
+            <div>
+
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="book-infor-admin">
+                <h3>Thông tin </h3> <br>
+
+                <div class="form-group-input-prod">
+                    <h5>Tên sách</h5>
+                    <input type="text" class="form-control" placeholder="Tên sách" name="Book_Name">
+                </div>
+                <div class="form-group-input-prod">
+                    <h5>Danh mục</h5>
+                    @Html.DropDownList("ID_BookCategory", null, htmlAttributes: new { @class = "form-control input-add-prod dropdown-input-prod" })
+                    <a href="@Url.Action("Create","BookCategories")" class="btn btn-success"> Thêm danh mục</a>
+                </div>
+                <div class="form-group-input-prod">
+                    <h5>Tác giả</h5>
+                    @Html.DropDownList("Author_ID", null, htmlAttributes: new { @class = "form-control input-add-prod dropdown-input-prod" })
+                    <a href="#" class="btn btn-success"> Thêm tác giả</a>
+
+                </div>
+                <div class="form-group-input-prod">
+                    <h5>Giá nhập</h5>
+                    <input type="number" class="form-control" placeholder="Giá nhập" min="0" value="0" name="PriceImport">
+
+
+                    <h5>Giá bán</h5>
+                    <input type="number" class="form-control" placeholder="Giá" min="0" value="0" name="PriceHire">
+
+                </div>
+                <h5>Mô tả</h5>
+                <textarea class="des-book-area form-control" placeholder="Mô tả sách ... " name="Description" rows="7"></textarea>
+                <input type="hidden" value="now" />
+                <button class="btn btn-success" type="submit">Thêm sách</button>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Quay lại", "Index")
+</div>

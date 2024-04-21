@@ -165,77 +165,99 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin.cs">
-      <DependentUpon>BookStoreDBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Author.cs">
-      <DependentUpon>BookStoreDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Book.cs">
-      <DependentUpon>BookStoreDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BookCategory.cs">
-      <DependentUpon>BookStoreDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BookStoreDBModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BookStoreDBModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BookStoreDBModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BookStoreDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BookStoreDBModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BookStoreDBModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Chat.cs">
-      <DependentUpon>BookStoreDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Comment.cs">
-      <DependentUpon>BookStoreDBModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminBookController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BookCategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BooksController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RevenueController.cs" />
     <Compile Include="Controllers\BookCartController.cs" />
+    <Compile Include="Controllers\BookHiredController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\DetailBookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Customer.cs">
-      <DependentUpon>BookStoreDBModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Controllers\LoginRegisterController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="HireBook.cs">
-      <DependentUpon>BookStoreDBModel.tt</DependentUpon>
+    <Compile Include="Models\Admin.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="HireBookDetail.cs">
-      <DependentUpon>BookStoreDBModel.tt</DependentUpon>
+    <Compile Include="Models\Author.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Book.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BookCategory.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cart.cs" />
-    <Compile Include="Package.cs">
-      <DependentUpon>BookStoreDBModel.tt</DependentUpon>
+    <Compile Include="Models\Chat.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Comment.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Expense.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HireBook.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HireBookDetail.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Package.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Patterns\Builder\AccountBuilder.cs" />
+    <Compile Include="Patterns\Builder\AccountDirector.cs" />
+    <Compile Include="Patterns\Builder\IAccountBuilder.cs" />
+    <Compile Include="Patterns\Command\Account.cs" />
+    <Compile Include="Patterns\Command\AccountInvoker.cs" />
+    <Compile Include="Patterns\Command\ICommand.cs" />
+    <Compile Include="Patterns\Command\LoginAccount.cs" />
+    <Compile Include="Patterns\Command\LogoutAccount.cs" />
+    <Compile Include="Patterns\FactoryMethod\FactoryCategory.cs" />
+    <Compile Include="Patterns\FactoryMethod\FinanceBook.cs" />
+    <Compile Include="Patterns\FactoryMethod\ICategory.cs" />
+    <Compile Include="Patterns\FactoryMethod\MarketingBook.cs" />
+    <Compile Include="Patterns\Iterator\ProductsIterator.cs" />
+    <Compile Include="Patterns\PrototypePattern.cs" />
+    <Compile Include="Patterns\SingletonPattern.cs" />
+    <Compile Include="Patterns\Strategy\CustomerOrder.cs" />
+    <Compile Include="Patterns\Strategy\FreeShip.cs" />
+    <Compile Include="Patterns\Strategy\IBilling.cs" />
+    <Compile Include="Patterns\Strategy\ShippingCost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BookStoreDBModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BookStoreDBModel.edmx</DependentUpon>
-      <LastGenOutput>BookStoreDBModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="BookStoreDBModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BookStoreDBModel.edmx</DependentUpon>
-      <LastGenOutput>BookStoreDBModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Content\admin.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -258,22 +280,64 @@
     <Content Include="Content\Images\slide1.jpg" />
     <Content Include="Content\Images\slide2.jpg" />
     <Content Include="Content\Images\tai-chinh-hanh-vi.jpg" />
+    <Content Include="Content\new.css" />
     <Content Include="Content\owl.carousel.min.css" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="BookStoreDBModel.edmx">
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\Admin_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminBook\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminBook\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminBook\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminBook\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminBook\Index.cshtml" />
+    <Content Include="Content\PDF\Tuan_07.pdf" />
+    <Content Include="Areas\Admin\Views\AdminHome\CancelHireBook.cshtml" />
+    <Content Include="Areas\Admin\Views\Revenue\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Books\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Books\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Books\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Books\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Books\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\ConfirmDeatilHireBook.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\FillName.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\FillDate.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\FillBookName.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\FillState.cshtml" />
+    <Content Include="Areas\Admin\Views\BookCategories\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\BookCategories\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\BookCategories\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\BookCategories\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\BookCategories\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminBook\Report.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\CloseBookPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\ManageOrder.cshtml" />
+    <EntityDeploy Include="Models\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BookStoreDBModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="BookStoreDBModel.edmx.diagram">
-      <DependentUpon>BookStoreDBModel.edmx</DependentUpon>
+    <Content Include="Models\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
     </Content>
+    <Content Include="ClassDiagram.cd" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\CountDown\JavaScript.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -305,9 +369,25 @@
     <Content Include="Views\BookCart\Index.cshtml" />
     <Content Include="Views\BookCart\ThankYouPage.cshtml" />
     <Content Include="Views\BookCart\CartPartial.cshtml" />
+    <Content Include="Views\LoginRegister\Login.cshtml" />
+    <Content Include="Views\LoginRegister\RegisterUser.cshtml" />
+    <Content Include="Views\BookHired\ShowBookHired.cshtml" />
+    <Content Include="Views\BookHired\ShowPDFFile.cshtml" />
+    <Content Include="Views\Order\OrderList.cshtml" />
+    <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\Order\HistoryOrderConfirm.cshtml" />
+    <Content Include="Views\Categories\PartialCateHeader.cshtml" />
+    <Content Include="Views\Categories\GetBookByCategoryID.cshtml" />
+    <Content Include="Views\Categories\PartialCategory.cshtml" />
+    <Content Include="Views\Categories\SearchBook.cshtml" />
+    <Content Include="Views\BookCart\EmpryCart.cshtml" />
+    <None Include="XMLSchema1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

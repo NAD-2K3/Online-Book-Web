@@ -7,7 +7,7 @@
 <div class="container body-page">
     <div class="row">
         <div class="col-lg-5">
-            <img src="~/Content/Images/prod2.jpg" style="width:100%" alt="">
+            <img src="~/Content/Images/@ViewBag.Book.Image" style="width:100%" alt="">
         </div>
         @using (Html.BeginForm("AddToCart", "BookCart", FormMethod.Post, new { @class = "col-lg-7" }))
         {
@@ -29,128 +29,85 @@
                 </div>
                 <select class="custom-select" name="DayPackage" id="inputGroupSelect01">
                     <option selected value="0">Chọn gói...</option>
-                    <option value="1">3 ngày</option>
-                    <option value="2">5 ngày</option>
-                    <option value="3">7 ngày</option>
+                    <option value="1">1 ngày</option>
+                    <option value="2">2 ngày</option>
+
+                    <option value="3">3 ngày</option>
+                    <option value="4">4 ngày</option>
+
+                    <option value="5">5 ngày</option>
+                    <option value="6">6 ngày</option>
+
+                    <option value="7">7 ngày</option>
+                    <option value="8">8 ngày</option>
+                    <option value="9">9 ngày</option>
+
+
                 </select>
             </div>
 
 
             <hr style="background-color: black; width: 100%;">
             <p><b style="font-size: 20px;">Tổng tiền: </b></p>
-            <p style="font-weight: 600; font-size: 35px; color: rgb(220, 0, 0);">20.000 đ</p>
+            <p style="font-weight: 600; font-size: 35px; color: rgb(220, 0, 0);">@ViewBag.Book.PriceHire đ</p>
             <input type="hidden" value="@ViewBag.Book.ID_Book" name="IDBook" />
-            <button class="btn btn-rent" type="submit">Đặt thuê</button>
+
+            if(Session["User_Name"] == null)
+            {
+                <a class="btn btn-rent" style="color:#fff" onclick="location.href = '@Url.Action("Login","LoginRegister")'">Đặt thuê</a>
+            }
+            else
+            {
+                <button class="btn btn-rent" style="color:#fff" type="submit">Đặt thuê</button>
+            }
 
         }
 
         <!--
-        <span>Đánh giá : </span>
-            <span style="color: rgb(155, 155, 0);">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-half"></i>
-            </span> <br/> <br/> <br/> -->
+    <span>Đánh giá : </span>
+        <span style="color: rgb(155, 155, 0);">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-half"></i>
+        </span> <br/> <br/> <br/> -->
         <!-- <div class="col-lg-3">
-            <h3>Mô tả</h3>
-            <p>Tác phẩm tiên phong “Chiến lược cạnh tranh” của Michael E. Porter – đã thay đổi cả lý thuyết, thực hành và giảng dạy chiến lược kinh doanh trên toàn thế giới. Hấp dẫn trong sự đơn giản – giống như mọi phát minh lớn – phân tích của Porter về các ngành công nghiệp đã thâu tóm toàn bộ sự phức tạp của cạnh tranh ngành vào năm yếu tố nền tảng. Porter đã giới thiệu một trong những công cụ cạnh tranh mạnh mẽ nhất cho tới nay: ba chiến lược cạnh tranh phổ quát – chi phí thấp, khác biệt hóa và trọng tâm -, những chiến lược đã biến định vị chiến lược trở thành một hoạt động có cấu trúc.</p>
-        </div> -->
+        <h3>Mô tả</h3>
+        <p>Tác phẩm tiên phong “Chiến lược cạnh tranh” của Michael E. Porter – đã thay đổi cả lý thuyết, thực hành và giảng dạy chiến lược kinh doanh trên toàn thế giới. Hấp dẫn trong sự đơn giản – giống như mọi phát minh lớn – phân tích của Porter về các ngành công nghiệp đã thâu tóm toàn bộ sự phức tạp của cạnh tranh ngành vào năm yếu tố nền tảng. Porter đã giới thiệu một trong những công cụ cạnh tranh mạnh mẽ nhất cho tới nay: ba chiến lược cạnh tranh phổ quát – chi phí thấp, khác biệt hóa và trọng tâm -, những chiến lược đã biến định vị chiến lược trở thành một hoạt động có cấu trúc.</p>
+    </div> -->
     </div>
 
     <div class="more-some-book">
         <h3>Khám phá thêm</h3>
         <hr />
         <div class="row">
-            <!-- product -->
-            <div class="col-lg-3 prod-item">
-                <div class="card" style="width: 18rem;">
-                    <a href=""><img class="card-img-top" src="~/Content/Images/prod2.jpg" alt="Card image cap"></a>
-                    <div class="card-body">
-                        <a href="#" class="title-prod"> <h5 class="card-title">luyện thi tiếng anh, tự tin giao tiếp</h5> </a>
-                        <h5 style="color: darkred;">50000đ</h5>
-                        <p class="card-text rating-card">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <span style="color: black;">(0 đánh giá)</span>
-                        </p>
-                        <a href="#" class="add-to-cart-btn"><i class="bi bi-cart-plus-fill"></i></a>
-                        <a href="#" class="see-detail-prod"><i class="bi bi-eye"></i></a>
 
+            @foreach (var item in ViewBag.lstBook)
+            {
+                <!-- product -->
+                <div class="col-lg-3 prod-item">
+                    <div class="card" style="width: 18rem;">
+                        <a href="@Url.Action("Index/" + item.ID_Book, "DetailBook")"><img class="card-img-top" src="~/Content/Images/@item.Image" alt="Card image cap"></a>
+                        <div class="card-body">
+                            <a href="#" class="title-prod"> <h5 class="card-title">@item.Book_Name</h5> </a>
+                            <h5 style="color: darkred;">@item.PriceHire đ</h5>
+                            <p class="card-text rating-card">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <span style="color: black;">(0 đánh giá)</span>
+                            </p>
+                            <a href="#" class="add-to-cart-btn"><i class="bi bi-cart-plus-fill"></i></a>
+                            <a href="#" class="see-detail-prod"><i class="bi bi-eye"></i></a>
+
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!--end product -->
-            <!-- product -->
-            <div class="col-lg-3 prod-item">
-                <div class="card" style="width: 18rem;">
-                    <a href=""><img class="card-img-top" src="~/Content/Images/prod2.jpg" alt="Card image cap"></a>
-                    <div class="card-body">
-                        <a href="#" class="title-prod"> <h5 class="card-title">luyện thi tiếng anh, tự tin giao tiếp</h5> </a>
-                        <h5 style="color: darkred;">50000đ</h5>
-                        <p class="card-text rating-card">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <span style="color: black;">(0 đánh giá)</span>
-                        </p>
-                        <a href="#" class="add-to-cart-btn"><i class="bi bi-cart-plus-fill"></i></a>
-                        <a href="#" class="see-detail-prod"><i class="bi bi-eye"></i></a>
-
-                    </div>
-                </div>
-            </div>
-            <!--end product -->
-            <!-- product -->
-            <div class="col-lg-3 prod-item">
-                <div class="card" style="width: 18rem;">
-                    <a href=""><img class="card-img-top" src="~/Content/Images/prod2.jpg" alt="Card image cap"></a>
-                    <div class="card-body">
-                        <a href="#" class="title-prod"> <h5 class="card-title">luyện thi tiếng anh, tự tin giao tiếp</h5> </a>
-                        <h5 style="color: darkred;">50000đ</h5>
-                        <p class="card-text rating-card">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <span style="color: black;">(0 đánh giá)</span>
-                        </p>
-                        <a href="#" class="add-to-cart-btn"><i class="bi bi-cart-plus-fill"></i></a>
-                        <a href="#" class="see-detail-prod"><i class="bi bi-eye"></i></a>
-
-                    </div>
-                </div>
-            </div>
-            <!--end product -->
-            <!-- product -->
-            <div class="col-lg-3 prod-item">
-                <div class="card" style="width: 18rem;">
-                    <a href=""><img class="card-img-top" src="~/Content/Images/prod2.jpg" alt="Card image cap"></a>
-                    <div class="card-body">
-                        <a href="#" class="title-prod"> <h5 class="card-title">luyện thi tiếng anh, tự tin giao tiếp</h5> </a>
-                        <h5 style="color: darkred;">50000đ</h5>
-                        <p class="card-text rating-card">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <span style="color: black;">(0 đánh giá)</span>
-                        </p>
-                        <a href="#" class="add-to-cart-btn"><i class="bi bi-cart-plus-fill"></i></a>
-                        <a href="#" class="see-detail-prod"><i class="bi bi-eye"></i></a>
-
-                    </div>
-                </div>
-            </div>
-            <!--end product -->
+                <!--end product -->
+            }
 
 
         </div>

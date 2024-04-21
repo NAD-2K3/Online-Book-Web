@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/admin.css">
+    <link rel="stylesheet" href="~/Content/new.css" />
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 left-admin-content">
+                <div class="head">
+                    <h2>QUẢN LÝ SHOP</h2>
+                </div>
+                <div class="list-group">
+                    <a href="/Admin/AdminHome/Index" class="list-group-item-action"><i class="bi bi-receipt-cutoff"></i>Quản lý đơn hàng </a>
+                    <a href="/Admin/AdminHome/CancelHireBook" class="list-group-item-action"> <i class="bi bi-book"></i>Quản lý hủy sách</a>
+                    <a href="#" class="list-group-item-action"> <i class="bi bi-shop"></i> Quản lý Thương hiệu</a>
+                    <a href="/Admin/Books/Index" class="list-group-item-action"> <i class="bi bi-book"></i>Quản lý sản phẩm</a>
+
+                    <a href="/Admin/Revenue/Index" class="list-group-item-action"> <i class="bi bi-currency-dollar"></i>Thống kê doanh thu </a>
+                    <a href="#" class="list-group-item-action"> <i class="bi bi-person"></i>Quản lý tài khoản </a>
+                    <a href="/Admin/AdminBook/Report" class="list-group-item-action"> <i class="bi bi-person"></i>Thống kê sách theo ngày</a>
+
+                </div>
+            </div>
+            <div class="col-lg-9 right-admin-content">
+                <div class="header-admin">
+                    <img src="Images/Logo.png" alt="">
+                    <span class="log-out-btn">
+                        <a href="/LoginRegister/LogOut">
+                            <i class="bi bi-person-circle"></i> Đăng xuất <i class="bi bi-door-open-fill"></i>
+                        </a>
+                    </span>
+                </div>
+
+                <div class="container-fluid container-content-admin">
+                    @RenderBody()
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+   
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>

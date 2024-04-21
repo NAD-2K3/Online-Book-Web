@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "FillBookName";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+    TimeSpan dayleft;
+    int ngay;
+    int hour;
+    int minute;
+    int second;
+}
+<style>
+
+    .btn-revenue {
+        width: 55%;
+        background-color: var(--main-color);
+        color: #fff;
+        margin-top: 20px;
+    }
+</style>
+<div class="statistic">
+    <div class="row">
+
+        <!-- card -->
+        <div class="col-lg-3 ">
+
+            <a href="/Admin/AdminHome/CancelHireBook" class="statistic-item-card">
+                <div class="card-statistic">
+                    <p>Tên khách hàng</p>
+                    <h3>7</h3>
+                </div>
+                <i class="bi bi-people-fill"></i>
+            </a>
+        </div>
+        <!-- end-card -->
+        <!-- card -->
+        <div class="col-lg-3 ">
+
+            <a href="/Admin/AdminHome/FillBookName" class="statistic-item-card">
+                <div class="card-statistic">
+                    <p>Tên sách</p>
+                    <h3>7</h3>
+                </div>
+                <i class="bi bi-people-fill"></i>
+            </a>
+        </div>
+        <!-- end-card -->
+        <!-- card -->
+        <div class="col-lg-3 ">
+
+            <a href="/Admin/AdminHome/FillState" class="statistic-item-card">
+                <div class="card-statistic">
+                    <p>Trạng thái</p>
+                    <h3>7</h3>
+                </div>
+                <i class="bi bi-people-fill"></i>
+            </a>
+        </div>
+        <!-- end-card -->
+
+        @using (Html.BeginForm("FillBookName", "AdminHome", FormMethod.Post, new { @class = "col-lg-7" }))
+        {
+            <input name="name" />
+            <button type="submit" class="btn btn-revenue">Xác nhận</button>
+
+        }
+        <div class="row main-statistic-content">
+            <div class="col-lg-12 ">
+                <div class="left-statistic-content">
+                    <div class="statistic-order-head">
+                        <span class="chart-icon"><i class="bi bi-bar-chart"></i></span>
+                        <span>Danh sách đơn thuê</span>
+                    </div>
+                    <div class="statistic-order-list">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Mã chi tiết đơn hàng</th>
+                                    <th scope="col">Tên khách hàng</th>
+                                    <th scope="col">Tên sách</th>
+                                    <th scope="col">Ngày bắt đầu</th>
+                                    <th scope="col">Ngày kết thúc</th>
+                                    <th scope="col">Số ngày còn lại</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- order-item -->
+                                @Html.Partial("~/Areas/Admin/Views/AdminHome/CloseBookPartial.cshtml");
+
+                                <!-- end-order-item -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+</div>

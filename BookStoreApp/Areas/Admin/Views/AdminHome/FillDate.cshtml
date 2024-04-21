@@ -1,0 +1,136 @@
+﻿
+@{
+    ViewBag.Title = "FillDate";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+}
+
+<style>
+
+    .btn-revenue {
+        width: 55%;
+        background-color: var(--main-color);
+        color: #fff;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="statistic">
+
+    <div class="row">
+
+        <!-- card -->
+        <div class="col-lg-3 ">
+
+            <a href="/Admin/AdminHome/Index" class="statistic-item-card">
+                <div class="card-statistic">
+                    <p>Trạng thái</p>
+                    <h3>7</h3>
+                </div>
+                <i class="bi bi-people-fill"></i>
+            </a>
+        </div>
+        <!-- end-card -->
+        <!-- card -->
+        <div class="col-lg-3 ">
+
+            <a href="/Admin/AdminHome/FillName" class="statistic-item-card">
+                <div class="card-statistic">
+                    <p>Khách Hàng</p>
+                    <h3>20</h3>
+                </div>
+                <i class="bi bi-book"></i>
+            </a>
+        </div>
+        <!-- end-card -->
+        <!-- card -->
+        <div class="col-lg-3 ">
+
+            <a href="/Admin/AdminHome/FillDate" class="statistic-item-card">
+                <div class="card-statistic">
+                    <p>Ngày</p>
+                    <h3>7</h3>
+                </div>
+                <i class="bi bi-receipt-cutoff"></i>
+            </a>
+
+
+        </div>
+
+
+        @using (Html.BeginForm("FillDate", "AdminHome", FormMethod.Post, new { @class = "col-lg-7" }))
+        {
+            <span> Ngày : </span>
+            <input type="date" style="margin-left: 10px;" name="dayStart" value="now" id="">
+            <button type="submit" class="btn btn-revenue">Xác nhận</button>
+        }
+
+    </div>
+
+    <div class="row main-statistic-content">
+        <div class="col-lg-8 ">
+            <div class="left-statistic-content">
+                <div class="statistic-order-head">
+                    <span class="chart-icon"><i class="bi bi-bar-chart"></i></span>
+                    <span>Danh sách đơn thuê</span>
+                    <span><a href="#">Xem tất cả </a></span>
+                </div>
+                <div class="statistic-order-list">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Mã đơn</th>
+                                <th scope="col">Tên khách hàng</th>
+                                <th scope="col">Ngày</th>
+                                <th scope="col">Trạng thái đơn hàng</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- order-item -->
+                            @Html.Partial("~/Areas/Admin/Views/AdminHome/ManageOrder.cshtml");
+
+                            <!-- end-order-item -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 right-statistic-content">
+            <div class="revenue-statistics">
+                <div class="revenue-statistics-head">
+                    <span><i class="bi bi-bell"></i></span>
+                    <span>Thống kê đơn hàng</span>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <i class="bi bi-receipt"></i>
+                        <span>Đơn thuê hôm nay:</span>
+                        <span style="margin-left: 5px;">0  Đơn hàng</span>
+                    </li>
+
+                    <li class="list-group-item">
+                        <i class="bi bi-hourglass-split"></i>
+                        <span>Đơn thuê chờ thanh toán:</span>
+                        <span style="margin-left: 5px;">0  Đơn hàng</span>
+                    </li>
+
+                    <li class="list-group-item">
+                        <i class="bi bi-check"></i>
+                        <span>Đơn thuê đã xác nhận:</span>
+                        <span style="margin-left: 5px;">8  Đơn hàng</span>
+                    </li>
+                    <li class="list-group-item">
+                        <i class="bi bi-x-circle"></i>
+                        <span>Đơn thuê đã hủy:</span>
+                        <span style="margin-left: 5px;">0  Đơn hàng</span>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+

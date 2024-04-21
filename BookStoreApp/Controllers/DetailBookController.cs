@@ -9,11 +9,13 @@ namespace BookStoreApp.Controllers
 {
     public class DetailBookController : Controller
     {
-        BookStoreOnlineEntities db = new BookStoreOnlineEntities();
+        BookStoreOnlineEntities1 db = new BookStoreOnlineEntities1();
         // GET: DetailBook
         public ActionResult Index(int id)
         {
-            ViewBag.Book = db.Books.FirstOrDefault(s => s.ID_Book == id);
+            var book = db.Books.FirstOrDefault(s => s.ID_Book == id);
+            ViewBag.Book = book;
+            ViewBag.lstBook = db.Books.Where(b => b.ID_BookCategory == book.ID_BookCategory).ToList().Take(4);
             return View();
         }
 

@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "SearchBook";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-lg-3">
+
+
+        @*<div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">Sách giáo khoa</a>
+                <a href="#" class="list-group-item list-group-item-action">Truyện tranh</a>
+                <a href="#" class="list-group-item list-group-item-action">Sách tiếng anh</a>
+                <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+            </div>*@
+        @{ Html.RenderAction("PartialCategory", "Categories"); }
+
+    </div>
+    <div class="col-lg-9 list-book">
+        <h2>Kết quả tìm kiếm cho "@ViewBag.SearchKey"</h2>
+        <div class="row">
+
+            @foreach (var item in ViewBag.LstProduct)
+            {
+                <!-- product -->
+                <div class="prod-item">
+                    <div class="card" style="width: 18rem;">
+                        <a href=""><img class="card-img-top" src="~/Content/Images/@item.Image" alt="Card image cap"></a>
+                        <div class="card-body">
+                            <a href="#" class="title-prod">
+                                <h5 class="card-title">@item.Book_Name</h5>
+                            </a>
+                            <h5 style="color: darkred;">@item.PriceHire đ</h5>
+                            <p class="card-text rating-card">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <span style="color: black;">(0 đánh giá)</span>
+                            </p>
+                            <a href="#" class="add-to-cart-btn"><i class="bi bi-cart-plus-fill"></i></a>
+                            <a href="#" class="see-detail-prod"><i class="bi bi-eye"></i></a>
+
+                        </div>
+                    </div>
+                </div>
+                <!--end product -->
+            }
+
+
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,74 @@
+﻿@model BookStoreApp.Models.HireBookDetail
+
+@{
+    ViewBag.Title = "HistoryOrderConfirm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+
+    /* history_order */
+    .history-order-title div {
+        font-weight: bold;
+    }
+
+    .his-order-item {
+        height: auto;
+    }
+
+    .his-order-prod {
+        color: #000;
+    }
+
+        .his-order-prod:hover {
+            text-decoration: none;
+            opacity: 0.7;
+        }
+
+        .his-order-prod img {
+            width: 30%;
+            height: 120px;
+        }
+
+    .his-order-item div {
+        display: flex;
+        align-items: center;
+    }
+
+    .his-order-prod span {
+        font-size: 20px;
+    }
+</style>
+
+<div class="container body-page">
+
+    <h2 style="margin-bottom: 50px;">Lịch sử sách đã mua</h2>
+
+    <div class="row history-order-title">
+        <div class="col-lg-4">Tên sách</div>
+        <div class="col-lg-3">Mô tả</div>
+        <div class="col-lg-3">Gói ngày</div>
+        <div class="col-lg-2"></div>
+    </div>
+    <hr>
+
+    @foreach (var item in ViewBag.HistoryOrder)
+    {
+        <!-- start-item -->
+        <div class="row his-order-item">
+            <a href="#" class="col-lg-4 his-order-prod">
+                <img src="~/Content/Images/@item.Book.Image" alt="Hinh anh">
+                <span>@item.Book.Book_Name</span>
+            </a>
+            <div class="col-lg-3">@item.Book.Description</div>
+            <div class="col-lg-3"><span>@item.Day_Limit</span></div>
+            <div class="col-lg-2 view-detail-his-order"> <a href="@Url.Action("ShowPDFFile","BookHired")"><i class="bi bi-eye-fill"></i> Xem chi tiết</a></div>
+            <div class="col-lg-2"><a href="@Url.Action("BookRenewal", "BookCart", new { id = item.ID_Book})">Gia han</a> </div>
+        </div>
+        <hr>
+        <!-- end-start-item -->
+
+
+    }
+
+</div>

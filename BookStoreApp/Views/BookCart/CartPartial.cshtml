@@ -1,4 +1,14 @@
-﻿<a href="#" class="cart-link">
+﻿
+@if (Session["User_Name"] == null)
+{
+    <a href="@Url.Action("Login", "LoginRegister")" class="cart-link">
+        <i class="bi bi-bag"></i>
+        <span class="amount-cart-item">0</span>
+    </a>
+}
+else { 
+<a href="@Url.Action("Index", "BookCart")" class="cart-link">
     <i class="bi bi-bag"></i>
     <span class="amount-cart-item">@ViewBag.TotalNumber</span>
 </a>
+}

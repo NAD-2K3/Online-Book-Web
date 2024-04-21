@@ -1,0 +1,75 @@
+﻿@model BookStoreApp.Models.Customer
+@{
+    ViewBag.Title = "LoginUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .field-validation-error {
+        color: red;
+        font-size: 15px;
+        margin: 15px 0px;
+    }
+</style>
+<div class="container body-page">
+
+    <div class="row">
+        <div class="col-lg-6" style="height:400px ;">
+            <img src="~/Content/Images/signup.png" alt="" style="width:100%; height: 100%;">
+        </div>
+
+        <div class="col-lg-6 login-box">
+            <h3 style="color: gray ;">Đăng ký</h3>
+            @using (Html.BeginForm("RegisterUser", "LoginRegister", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken();
+                <div class="form-group">
+                    @*@Html.TextBoxFor(model => model.User_Name, new { placeholder = "Nhập tên tài khoản", @class = "form-control" })*@
+                    <p class="field-validation-error"> @Html.ValidationMessageFor(model => model.User_Name)</p>
+
+                    <input type="text" class="form-control" name="User_Name" placeholder="Tên tài khoản">
+                </div>
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.Name, new { placeholder = "Tên", @class = "form-control" })
+                    <p class="field-validation-error"> @Html.ValidationMessageFor(model => model.Name)</p>
+
+                    @*<input type="password" class="form-control" placeholder="Mật khẩu đăng nhập">*@
+                </div>
+
+                <div class="form-group">
+                    @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control" } })
+
+
+                    @*<input type="password" class="form-control" placeholder="Mật khẩu đăng nhập">*@
+                </div>
+
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.Phone_Number, new { placeholder = "Số điện thoại", @class = "form-control" })
+                    <p class="field-validation-error"> @Html.ValidationMessageFor(model => model.Phone_Number)</p>
+
+                    @*<input type="password" class="form-control" placeholder="Mật khẩu đăng nhập">*@
+                </div>
+
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.Address, new { placeholder = "Địa chỉ", @class = "form-control" })
+                    <p class="field-validation-error"> @Html.ValidationMessageFor(model => model.Address)</p>
+
+                    @*<input type="password" class="form-control" placeholder="Mật khẩu đăng nhập">*@
+                </div>
+
+                <div class="form-group">
+                    @Html.PasswordFor(model => model.Password, new { placeholder = "Mật khẩu đăng nhập", @class = "form-control" })
+                    <p class="field-validation-error"> @Html.ValidationMessageFor(model => model.Password)</p>
+
+                    @*<input type="password" class="form-control" placeholder="Mật khẩu đăng nhập">*@
+                </div>
+
+                if (ViewBag.ErrorRegister != null)
+                {
+                    <p class="field-validation-error">@ViewBag.ErrorRegister</p>
+                }
+                <button type="submit" class="btn-login">Đăng ký ngay</button>
+            }
+        </div>
+    </div>
+
+</div>

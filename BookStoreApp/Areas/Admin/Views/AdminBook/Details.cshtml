@@ -1,0 +1,99 @@
+﻿@model BookStoreApp.Models.Book
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Book</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Book_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Book_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceImport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceImport)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceHire)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceHire)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateImport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateImport)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Chapter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chapter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Link)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Author.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookCategory.Name_BookCategory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookCategory.Name_BookCategory)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Book }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

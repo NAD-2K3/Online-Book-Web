@@ -1,0 +1,47 @@
+﻿@model BookStoreApp.Models.Customer
+
+@{
+    ViewBag.Title = "LoginUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container body-page">
+
+    <div class="row">
+        <div class="col-lg-6" style="height:400px ;">
+            <img src="~/Content/Images/login.png" alt="" style="width:100%; height: 100%;">
+        </div>
+
+        <div class="col-lg-6 login-box">
+            <h3 style="color: gray ;">Đăng nhập</h3>
+            @using (Html.BeginForm("Login", "LoginRegister"))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Tài khoản</label>
+                    @Html.TextBoxFor(model => model.User_Name, new { placeholder = "Nhập tài khoản của bạn", @class = "form-control" })
+                    @*<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập địa chỉ email của bạn">*@
+
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Mật khẩu</label>
+                    @Html.PasswordFor(model => model.Password, new { placeholder = "Nhập mật khẩu", @class = "form-control" })
+                    @*<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Mật khẩu đăng nhập">*@
+                </div>
+                <button type="submit" class="btn-login">Đăng nhập</button>
+                if (ViewBag.ErrorInfo != null)
+                {
+                    <p class="field-validation-error">@ViewBag.ErrorInfo</p>
+                }
+            }
+
+            <div class="sign-up-link">
+                bạn chưa có tài khoản ? <a href="/LoginRegister/RegisterUser">Đăng ký ngay</a>
+
+                <a href="#" style="float: right;">Quên mật khẩu</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+

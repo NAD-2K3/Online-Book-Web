@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="873d885f1cef4db08f57c9093a6de8cd" Name="Diagram1">
+        <EntityTypeShape EntityType="BookStoreOnlineModel.Admin" Width="1.5" PointX="7.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreOnlineModel.Author" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreOnlineModel.Book" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreOnlineModel.BookCategory" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreOnlineModel.Chat" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreOnlineModel.Comment" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreOnlineModel.Customer" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreOnlineModel.Expense" Width="1.5" PointX="9.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreOnlineModel.HireBook" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreOnlineModel.HireBookDetail" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreOnlineModel.Package" Width="1.5" PointX="7.75" PointY="11.5" IsExpanded="true" />
+        <AssociationConnector Association="BookStoreOnlineModel.FK__Book__Author_ID__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreOnlineModel.FK__Book__ID_BookCat__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreOnlineModel.FK__Comment__ID_Book__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreOnlineModel.FK__HireBookD__ID_Bo__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreOnlineModel.FK__Chat__User_Name__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreOnlineModel.FK__Comment__User_Na__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreOnlineModel.FK__HireBook__User_N__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreOnlineModel.FK__HireBookD__ID_Hi__3A81B327" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,44 @@
+﻿
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="body-page">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Sản phẩm</th>
+                <th scope="col">Gói ngày</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            @foreach (var item in ViewBag.OrderDetail)
+            {
+                <tr class="prod-list-table">
+
+                    <td class="prod-list-details" style="padding-top: 10px;">
+                        <img src="~/Content/Images/@item.Book.Image" alt="Hình ảnh">
+                        <h5>7 thói quen hiệu quả trong kinh tế</h5>
+                    </td>
+                    <td>
+                        <div class="edit-quantity-form">
+
+                            <span>@item.Day_Limit</span>
+                        </div>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <hr />
+
+</div>
+
+

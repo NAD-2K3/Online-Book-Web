@@ -1,0 +1,12 @@
+﻿<div class="dropdown show">
+    <a class="category-nav" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="bi bi-list"></i>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        @foreach (var item in ViewBag.CategoryHeader)
+        {
+            <a class="dropdown-item" href="@Url.Action("GetBookByCategoryID/" + item.ID_BookCategory,"Categories")">@item.Name_BookCategory</a>
+
+        }
+    </div>
+</div>

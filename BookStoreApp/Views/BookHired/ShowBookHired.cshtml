@@ -1,0 +1,75 @@
+﻿@using BookStoreApp.Models
+@{
+    ViewBag.Title = "ShowBookHired";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    TimeSpan dayleft;
+    int ngay;
+    int hour;
+    int minute;
+    int second;
+    int count = 0;
+}
+
+<div class="row main-statistic-content">
+    <div class="col-lg-12 ">
+        <div class="left-statistic-content">
+            <div class="statistic-order-head">
+                <span class="chart-icon"><i class="bi bi-bar-chart"></i></span>
+                <span>Danh sách đơn thuê</span>
+                <span><a href="#">Xem tất cả </a></span>
+            </div>
+            <div class="statistic-order-list">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Mã đơn</th>
+                            <th scope="col">Tên sách</th>
+                            <th scope="col">Thời gian bắt đầu</th>
+                            <th scope="col">Thời gian kết thúc</th>
+                            <th scope="col">Thời gian còn lại</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- order-item -->
+                        @foreach (var item in ViewBag.lstHireBookDetail)
+                        {
+                            dayleft = @item.Date_End - DateTime.Now;
+                            ngay = dayleft.Days;
+                            hour = dayleft.Hours;
+                            minute = dayleft.Minutes;
+                            second = dayleft.Seconds;
+                            <tr class="statistic-list" style="background-color: rgb(221, 220, 220);">
+                                <th scope="row">@item.HireBookDetail_ID</th>
+                                <td>@item.Book.Book_Name</td>
+                                <td>@item.Date_Start</td>
+                                <td>@item.Date_End</td>
+                                <td>
+                                    <span id="days_@count">@ngay</span>:
+                                    <span id="hours_@count">@hour</span>
+                                    :<span id="minutes_@count">@minute</span>
+                                    :<span id="seconds_@count">@second</span>
+
+                                </td>
+                                <td class="link-order-detail-view">
+                                    <a href="/BookHired/ShowPDFFile/?i=Tuan_07.pdf">Xem chi tiết</a>
+                                    <span class="dot-watched"><i class="bi bi-dot"></i></span>
+
+                                </td>
+                            </tr>
+                            count++;
+                        }
+
+                        <!-- end-order-item -->
+                        <!-- order-item -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="Count" value="@count"></input>
+</div>
+
+<script src="~/Scripts/CountDown/JavaScript.js">
+
+</script>

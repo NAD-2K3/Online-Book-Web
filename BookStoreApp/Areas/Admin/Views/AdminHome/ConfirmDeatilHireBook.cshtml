@@ -1,0 +1,119 @@
+﻿
+@{
+    ViewBag.Title = "DeatilHireBook";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+    double total = 0;
+}
+<style>
+
+    .btn-revenue {
+        width: 55%;
+        background-color: var(--main-color);
+        color: #fff;
+        margin-top: 20px;
+    }
+</style>
+<div class="statistic">
+    
+
+    <div class="row main-statistic-content">
+        <div class="col-lg-8 ">
+            <div class="left-statistic-content">
+                <div class="statistic-order-head">
+                    <span class="chart-icon"><i class="bi bi-bar-chart"></i></span>
+                    <span>Danh sách đơn thuê</span>
+                    <span><a href="#">Xem tất cả </a></span>
+                </div>
+                <div class="statistic-order-list">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Mã chi tiết đơn hàng</th>
+                                <th scope="col">Tên sách</th>
+                                <th scope="col">Đơn giá</th>
+                                <th scope="col">Gói ngày</th>
+                                <th scope="col">Ngày đặt</th>
+                                <th scope="col">Ngày kết thúc</th>
+                                <th scope="col">Tổng tiền</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- order-item -->
+                            @foreach (var item in ViewBag.lstConfirmDetailHireBook)
+                            {
+
+                                total = @item.Book.PriceHire * item.Day_Limit;
+                                <tr class="statistic-list" style="background-color: rgb(221, 220, 220);">
+                                    <th scope="row">@item.HireBookDetail_ID</th>
+                                    <td>@item.Book.Book_Name</td>
+                                    <td>@item.Book.PriceHire</td>
+                                    <td>@item.Day_Limit</td>
+                                    @if (@item.Date_Start == null)
+                                    {
+                                        <td>Chưa xác nhận</td>
+                                        <td>Chưa xác nhận</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@item.Date_Start</td>
+                                        <td>@item.Date_End</td>
+                                    }
+                                    <td>@total</td>
+                                </tr>
+                            }
+                            <!-- end-order-item -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-4 right-statistic-content">
+            <div class="revenue-statistics">
+                <div class="revenue-statistics-head">
+                    <span><i class="bi bi-bell"></i></span>
+                    <span>Thống kê đơn hàng</span>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <i class="bi bi-receipt"></i>
+                        <span>Đơn thuê hôm nay:</span>
+                        <span style="margin-left: 5px;">0  Đơn hàng</span>
+                    </li>
+
+                    <li class="list-group-item">
+                        <i class="bi bi-hourglass-split"></i>
+                        <span>Đơn thuê chờ thanh toán:</span>
+                        <span style="margin-left: 5px;">0  Đơn hàng</span>
+                    </li>
+
+                    <li class="list-group-item">
+                        <i class="bi bi-check"></i>
+                        <span>Đơn thuê đã xác nhận:</span>
+                        <span style="margin-left: 5px;">8  Đơn hàng</span>
+                    </li>
+                    <li class="list-group-item">
+                        <i class="bi bi-x-circle"></i>
+                        <span>Đơn thuê đã hủy:</span>
+                        <span style="margin-left: 5px;">0  Đơn hàng</span>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        @if (ViewBag.hirebook_Confirm == 0)
+        {
+            <a href="/AdminHome/Confirm/?i=@ViewBag.HireBook_ID"><button type="submit" class="btn btn-revenue">Xác nhận</button></a>
+
+        }
+        else
+        {
+            <a href="/AdminHome/Cancle/?i=@ViewBag.HireBook_ID"><button type="submit" class="btn btn-revenue">Hủy xác nhận</button></a>
+
+        }
+    </div>
+</div>
+

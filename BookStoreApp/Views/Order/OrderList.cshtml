@@ -1,0 +1,71 @@
+﻿@*@model IEnumerable<BookStoreApp.Models.HireBook>*@
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-bottom: 40px">Danh sách đơn hàng</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Mã khách hàng
+        </th>
+        <th>
+            Tổng cộng
+        </th>
+        <th>
+            Ngày thuê
+        </th>
+        <th>
+            Tên khách hàng
+        </th>
+
+        <th>
+            Trạng thái
+        </th>
+        <th>
+            @ViewBag.strName
+        </th>
+    </tr>
+
+    @foreach (var item in ViewBag.OrderList)
+    {
+        <tr>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Confirm)*@
+                @item.ID_HireBook
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Total)*@
+                @item.Total
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Date_Start)*@
+                @item.Date_Start
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Customer.Name)*@
+                @item.Customer.Name
+            </td>
+            <td>
+                @if(item.Confirm == 1)
+                {
+                    <span style="color: green">Đã xác nhận</span>
+                }
+                else
+                {
+                    <span  style="color: red">Chưa xác nhận</span>
+                }
+ 
+            </td>
+            <td>
+                @Html.ActionLink("Xem chi tiết", "Details", new { id = item.ID_HireBook }) 
+            </td>
+        </tr>
+    }
+
+</table>
+
+

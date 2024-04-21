@@ -10,13 +10,15 @@ body{
 .left-admin-content{
     height: 100vh;
     background-color: var(--main-color);
-    /* position: fixed; */
+    position: fixed; 
     color: #fff;
     padding: 30px 0px;
     z-index: 2;
 }
-
-.left-admin-content h2{
+.right-admin-content {
+    margin-left: 480px;
+}
+.left-admin-content h2 {
     margin: 30px;
 }
 .container-content-admin{
@@ -27,7 +29,7 @@ body{
     color: #fff;
     font-size: 25px;
     padding: 10px ;
-    padding-left: 38px;;
+    padding-left: 38px;
 }
 
 .header-admin{

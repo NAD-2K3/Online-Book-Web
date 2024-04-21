@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+}
+<style>
+
+    .btn-revenue {
+        width: 55%;
+        background-color: var(--main-color);
+        color: #fff;
+        margin-top: 20px;
+    }
+</style>
+
+<h3>Thống kê doanh thu</h3>
+<br>
+<div class="revenue">
+    <div class="row">
+        <div class="col-lg-4">
+            @using (Html.BeginForm("Index", "Revenue", FormMethod.Post, new { @class = "row" }))
+            {
+                @Html.ValidationSummary(true)
+                <div class="col-lg-12" style="margin-bottom: 30px;">
+                    <span>Từ ngày : </span>
+                    <input type="date" style="margin-left: 10px;" name="dayStart" value="now" id="">
+
+                </div>
+
+                <div class="col-lg-12">
+                    <span>Đến ngày : </span>
+                    <input type="date" value="now" name="dayEnd" id="">
+
+                </div>
+                
+                <div class="col-lg-12">
+                    <br />
+                    <span style="color:red">@ViewBag.Noti</span>
+                    <button type="submit" class="btn btn-revenue">Thống kê</button>
+
+                </div>
+            }
+        </div>
+        <div class="col-lg-7">
+            <div style="font-size: 20px; width: 100%; display: flex;">
+                <div style="width: 18%;">
+                    <span><i class="bi bi-currency-dollar"></i></span>
+                    <span>Thu được :</span>
+                </div>
+                <div>@String.Format("{0:#,##0;Nothing}", @ViewBag.Proceeds) đ</div>
+            </div>
+            <hr />
+            <div style="font-size: 20px; width: 100%; display: flex;">
+                <div style="width: 18%;">
+                    <span><i class="bi bi-currency-dollar"></i></span>
+                    <span>Chi tiêu:</span>
+                </div> <br />
+                <div>@String.Format("{0:#,##0;Nothing}", @ViewBag.Expense) đ</div>
+            </div>
+            <hr />
+
+
+            <div style="font-size: 30px;">
+                <span><i class="bi bi-cash-coin"></i></span>
+                <span>Doanh thu : </span>
+                <span>@String.Format("{0:#,##0;0}", @ViewBag.Revenue) đ</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 30px;">
+    <div class="col-lg-6">
+        <div class="left-statistic-content">
+            <div class="statistic-order-head">
+                <span class="chart-icon"><i class="bi bi-bar-chart"></i></span>
+                <span>Danh sách đơn thuê</span>
+                <span><a href="#">Xem tất cả </a></span>
+            </div>
+            <div class="statistic-order-list">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Mã đơn</th>
+                            <th scope="col">Tên khách hàng</th>
+                            <th scope="col">Ngày</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.ListOrder)
+                        {
+                            <!-- order-item -->
+                            <tr>
+                                <th scope="row">#@item.ID_HireBook</th>
+                                <td>@item.Customer.Name</td>
+                                <td> @String.Format("{0:dd/MM/yyyy}", item.Date_Start)</td>
+
+
+                                <td class="link-order-detail-view"> <a href="#">Xem chi tiết</a> </td>
+                            </tr>
+                            <!-- end-order-item -->
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4  right-statistic-content">
+        <div class="revenue-statistics ">
+            <div class="revenue-statistics-head " style="margin-bottom: 10px;">
+
+                <span>Chi tiêu trong tháng</span>
+            </div>
+            <div class="">
+
+
+
+                @foreach (var item in ViewBag.ListExpenses)
+                {
+                    <div class="row" style="padding: 5px 10px; align-items: center;">
+                        <div class="col-lg-4">@item.Describe_Expense :</div>
+                        <div class="col-lg-8">@String.Format("{0:#,##0;Nothing}", item.Price) đ</div>
+
+                    </div>
+                    <hr>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

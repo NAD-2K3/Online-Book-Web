@@ -8,7 +8,7 @@ namespace BookStoreApp.Models
 {
     public class Cart
     {
-        BookStoreOnlineEntities db = new BookStoreOnlineEntities();
+        BookStoreOnlineEntities1 db = new BookStoreOnlineEntities1();
         public int Id { get; set; }
         public string Name { get; set; }    
         public string Image { get; set; }
@@ -19,6 +19,19 @@ namespace BookStoreApp.Models
 
         public decimal TotalPrice()
         {
+
+            if (Price > 200000)
+            {
+                var method = new CustomerOrder(new ShippingCost());
+                Price = method.SetMethod(Price);
+            }
+
+            else
+            {
+                var method = new CustomerOrder(new FreeShip());
+                Price = method.SetMethod(Price);
+            }
+
             return Price * DayPackage;
         }
 
@@ -29,7 +42,8 @@ namespace BookStoreApp.Models
             this.Name = productDB.Book_Name;
             this.Image = productDB.Image;
             this.DayPackage = 0;
-            this.Price = productDB.PriceHire;
+            this.Price = (decimal)productDB.PriceHire;
+
         }
     }
 }

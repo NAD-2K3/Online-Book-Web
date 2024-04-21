@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="~/Content/owl.carousel.min.css">
     <link rel="stylesheet" href="~/Content/style.css">
+    
 </head>
 <body>
-    <!-- header     -->
+    <!-- header-->
     <div class="header">
-        <div class="head-top">
+        <div class="head-top p-2">
             <div class="container">
                 <div class="row">
-
                     <div class="col-lg-4"><h5 style="color: rgb(255, 255, 255); margin: 0;">Ở đây có thuê sách hay</h5></div>
                     <div class="col-lg-4"></div>
                     <div class="col-lg-4"><h5 style="color: rgb(255, 255, 255); margin: 0;">Sách và văn phòng phẩm online</h5></div>
@@ -26,22 +26,54 @@
         <div class="container head-content">
             <div class="row">
                 <div class="col-lg-3 logo">
-                    <a href="#"><img src="~/Content/Images/Logo.png" alt=""></a>
+                    <a href="@Url.Action("Index", "Home")"><img src="~/Content/Images/Logo.png" alt=""></a>
                 </div>
                 <div class="col-lg-6 head-middle">
 
-                    <form action="#">
-                        <input type="text" placeholder="Nhập từ khóa tìm kiếm">
+                    @using (Html.BeginForm("SearchBook", "Categories"))
+                    {
+
+                        <input type="text" name="search_key" placeholder="Nhập từ khóa tìm kiếm">
                         <button type="submit"><i class="bi bi-search"></i></button>
-                    </form>
-                </div>
+                    }
+                    </div>
+
+                @*@{ var user = Session["User_Name"] as BookStoreApp.Models.Customer;}*@
+
                 <div class="col-lg-3 head-right">
+
                     @{ Html.RenderAction("CartPartial", "BookCart"); }
+                    @if (Session["User_Name"] == null)
+                    {
+                        <a href="/LoginRegister/Login" class="login-link">Đăng nhập</a>
+                        <a href="/LoginRegister/RegisterUser" class="login-link" style="margin-left:5px">Đăng ký</a>
+                    }
 
-                    <a href="#" class="login-link">Đăng nhập</a>
-                    <a href="#" class="login-link" style="margin-left:5px">Đăng ký</a>
+                    else
+                    {
+                        <div class="dropdown show col-lg-6 head-right">
+                            <a style="text-decoration:none; text-align:center" class="user-link-option" href="" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i style="font-size:20px; color:black; margin-right: 10px; width:100%" class="bi bi-person"></i>
+                                <p style="font-size: 15px; color: black;">@Session["Name"]</p>
 
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                @*<a class="dropdown-item" href="@Url.Action("OrderList/" + @Session["User_Name"],"Order")">Đơn hàng của bạn</a>*@
+                                @using (Html.BeginForm("OrderList", "Order"))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" value="@Session["User_Name"]" name="user_name" />
+                                    <input type="submit" class="btn dropdown-item" value="Don Hang Cua Ban" />
+                                }
+                                <a class="dropdown-item" href="/BookHired/ShowBookHired/?i=@Session["User_Name"]">Sách đang thuê</a>
+                                <a class="dropdown-item" href="@Url.Action("LogOut","LoginRegister")">Đăng xuất</a>
+
+                            </div>
+                        </div>
+                    }
                 </div>
+
+
             </div>
         </div>
     </div>
@@ -51,7 +83,7 @@
         <div class="container nav-list">
             <div class="row" style="align-items: center;">
                 <div class="col-lg-1">
-                    <div class="dropdown show">
+                    @*<div class="dropdown show">
                         <a class="category-nav" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="bi bi-list"></i>
                         </a>
@@ -60,7 +92,10 @@
                             <a class="dropdown-item" href="#">Another action</a>
                             <a class="dropdown-item" href="#">Something else here</a>
                         </div>
-                    </div>
+                    </div>*@
+
+                    @{ Html.RenderAction("PartialCateHeader", "Categories"); }
+
                 </div>
                 <div class="col-lg-1"></div>
 
@@ -107,8 +142,8 @@
                 </span>
             </div>
             <!-- body -->
-            <div class="chat-box-body">
-                <div class="container-chat">
+            <div class="chat-box-body" id="outer-container">
+                <div class="container-chat" id="inner-container">
                     <!-- shop-chat -->
                     <div class="shop-chat-item">
 
@@ -141,15 +176,13 @@
                     <!-- end-shop-chat -->
 
                     <div class="user-chat-item">
-                        
-                            <div class="user-chat-content">
 
-                                <p>hihihhi </p>
-                            </div>
-                            <small style="color: rgb(80, 80, 80);float: right;">23/03/2003</small>
-                        
+                        <div class="user-chat-content">
+
+                            <p>hihihhi </p>
+                        </div>
+                        <small style="color: rgb(80, 80, 80);float: right;">23/03/2003</small>
                     </div>
-
 
                 </div>
 
@@ -169,11 +202,15 @@
         <!-- chat-box-icon -->
         <div class="chat-item-button" id="chat-box-button"><i class="bi bi-wechat"></i></div>
         <!-- chat-box-icon -->
-
+        <script>
+            window.onload = function () {
+                var outerContainer = document.getElementById("outer-container");
+                var innerContainer = document.getElementById("inner-container");
+                outerContainer.scrollTop = innerContainer.scrollHeight;
+            };
+        </script>
 
     </div>
-
-
 
     <div class="helping-selection">
         <div class="container">
@@ -251,10 +288,6 @@
             </div>
         </div>
     </div>
-
-
-
-
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
